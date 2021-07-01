@@ -1,0 +1,139 @@
+{
+	"extensionName": {
+		"message": "MISP Expansion",
+		"description": "Name of the extension."
+	},
+
+	"extensionDescription": {
+		"message": "Misp Threat Sharing",
+		"description": "Description of the extension."
+	},
+	
+	"extensionTitle": {
+		"message": "MISP Expansion",
+		"description": "Name of the extension in the toolbar"
+	},
+	
+	"saveButton": {
+		"message": "Save Instance",
+		"description": "button from option.html in order to save data"
+	},
+	
+	"eraseConfirm":{
+		"message": "Confirm deletion of all data ?",
+		"description": "validation request before data deletion"
+	},
+	
+	"erase":{
+		"message": "delete saved data",
+		"description": "option html if erase button clicked"
+	},
+	
+	"eraseDone":{
+		"message": "Data deleted"
+	},
+	
+	"loginTexte": {
+		"message": "URL",
+		"description": "URL address of MISP instance"
+	},
+	
+	"emptyChamp":{
+		"message": "Enter an Adress and an auth key please",
+		"description": "option html if empty field"
+	},
+	
+	"instance":{
+		"message": "Instance adder",
+		"description": "option.html button name wich open the instance adder option page"
+	},
+	
+	"view":{
+		"message": "Instance viewer",
+		"description": "option.html button name wich open the view option page"
+	},
+	
+	"idSaved":{
+		"message": "Misp Instance saved",
+		"description": "when you press 'save' button and option.html close -> save succes"
+	},
+	
+	"link":{
+		"message": "Search Link",
+		"description": "context menu link"
+	},
+	
+	"selection":{
+		"message": "Search Selection :",
+		"description": "context menu selection"
+	},
+	
+	"pwdTexte": {
+		"message": "Auth Key",
+		"description": "psw to connect to MISP"
+	},
+	
+	"NoCredentials":{
+		"message": "no Misp credentials saved",
+		"description": "if there is no storage credentials"
+	},
+	
+	"infoTitle": {
+		"message": "Info",
+		"description": "standard title for notifications"
+	},
+	
+	"requestFail": {
+		"message": "httpRequest's promise was not received -> "
+	},
+	
+	"warning": {
+		"message": "WARNING",
+		"description": "notif title if there is a response error"
+	},
+	
+	"warningMessage": {
+		"message": "It seems that an error has occurred",
+		"description": "if a problem has occured on the server side"
+	},
+	
+	"optionRequest": {
+		"message": "Request Options ",
+		"description": "name of the option menu"
+	},
+
+	"numberOfRes": {
+		"message": "maximum of displayed result: ",
+		"description": "number of returned event from fetch"
+	},
+	
+	"event": {
+		"message": "Event ",
+		"description": "name of res notif of fetch"
+	},
+	
+	"nbOfElement": {
+		"message": "Number of Attributs in one event: ",
+		"description": "number of Element in an object (response.attribut)"
+	},
+	
+	"nbOfObject": {
+		"message": "Number of event in the request: ",
+		"description": "number of object in the response "
+	},
+	
+	"nbOfEvent": {
+		"message": "Number of object the Event attributes: ",
+		"description": "Number of object the Event attributes"
+	},
+	
+	"emptyResult": {
+		"message": "No element found",
+		"description": "if fetch return nothing"
+	},
+	
+	"page":{
+		"message": "Search Page's url",
+		"description": "context menu page"
+	}
+}

@@ -1,0 +1,36 @@
+body{
+	background-color: #F7F7F7;	
+}
+
+p{
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#main {
+	left: 40%;
+	position: absolute;
+	font-weight: bold;
+}
+
+#logInput{
+	width:400px;
+    height:25px;
+}
+
+#pwdInput{
+	width:400px;
+    height:25px;
+}
+
+div{
+	top: 20%;
+}
+#saveButton{
+	width:200px;
+    height:50px;
+	position: absolute;
+	font: bold arial;
+	outline: none;
+	margin-top: 2em;
+}

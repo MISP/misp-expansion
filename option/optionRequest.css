@@ -1,0 +1,17 @@
+body{
+	background-color: #F7F7F7;	
+}
+
+div{
+	left: 40%;
+	position: absolute;
+	font: bold 1.4em arial;
+	outline: none;
+}
+
+#norInput{
+	width:50px;
+    height:25px;
+	margin-bottom: 60%;
+	font-size: 0.80em;
+}

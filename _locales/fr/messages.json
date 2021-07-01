@@ -1,0 +1,140 @@
+{
+	"extensionName": {
+		"message": "MISP Expansion",
+		"description": "nom de l'extension."
+	},
+
+	"extensionDescription": {
+		"message": "Misp Threat Sharing",
+		"description": "Description de l'extension."
+	},
+	
+	"extensionTitle": {
+		"message": "MISP Expansion",
+		"description": "Nom de l'extension dans la bar d'outils"
+	},
+	
+	"saveButton": {
+		"message": "Enregistrer l'instance",
+		"description": "bouton de option.html pour enregistrer data"
+	},
+	
+	"link":{
+		"message": "Rechercher le Lien",
+		"description": "context menu link"
+	},
+	
+	"selection":{
+		"message": "Rechercher la Selection :",
+		"description": "context menu selection"
+	},
+	
+	"erase":{
+		"message": "Supprimer les données enregistrées",
+		"description": "option html si bouton effacer click"
+	},
+	
+	"idSaved":{
+		"message": "Instance enregistrée",
+		"description": "indique que l'enregistrement des données dans option.html s'est correctement déroulé"
+	},
+	
+	"eraseConfirm":{
+		"message": "Confirmer la suppression de toutes les données ?",
+		"description": "demande de validation avant la suppression données"
+	},
+	
+	"eraseDone":{
+		"message": "Données supprimées"
+	},
+	
+	"loginTexte": {
+		"message": "URl",
+		"description": "URL to connect to MISP"
+	},
+	
+	"pwdTexte": {
+		"message": "Clé d'authentification",
+		"description": "mdp pour se conecter à la base MISP"
+	},
+	
+	"emptyChamp":{
+		"message": "veuillez saisir une adresse et une mot clé d'authentification",
+		"description": "option html si un champ est laissé vide"
+	},
+	
+	"instance":{
+		"message": "Ajouter une instance",
+		"description": "nom du bouton de option.html ouvrant la page addinstance.html "
+	},
+	
+	"view":{
+		"message": "Liste des instances",
+		"description": "nom du bouton de option.html ouvrant la page d'affichage des instances enregistrées "
+	},
+	
+	"infoTitle": {
+		"message": "Info",
+		"description": "titre basique pour notifications"
+	},
+	
+	"requestFail": {
+		"message": "httpRequest n'a pas reçu de réponse -> ",
+		"description" : "si il y a une erreur dans la requete"
+	},
+	
+	"warning": {
+		"message": "WARNING",
+		"description": "titre de notif lors d'unbe erreur de réponse"
+	},
+	
+	"warningMessage": {
+		"message": "un problème est survenu",
+		"description": "erreur survenue sur le serveur source"
+	},
+	
+	"optionRequest": {
+		"message": "Options de la requête",
+		"description": "nom d'un menu option"
+	},
+	
+	"numberOfRes": {
+		"message": "Nombre d'évenements maximum affichés: ",
+		"description": "nombre d'event afficher avec fetch"
+	},
+	
+	"NoCredentials":{
+		"message": "Auncun identifiant Misp enregistré",
+		"description": "si il n'y a pas de credentials dans le storage"
+	},
+	
+	"event": {
+		"message": "Evenement ",
+		"description": "nom de réponse fetch"
+	},
+	
+	"nbOfElement": {
+		"message": "Nombre d'attributs dans un évenement: ",
+		"description": "nombre d'élément dans un objet (response.attribut)"
+	},
+	
+	"nbOfObject": {
+		"message": "Nombre d'évenements dans la requête: ",
+		"description": "nombre d'object dans la réponse de la requête"
+	},
+	
+	"nbOfEvent": {
+		"message": "Nombre d'objets dans l'attribut Event: ",
+		"description": "nombre d'objets dans la clé event dans attribut"
+	},
+	
+	"emptyResult": {
+		"message": "Aucun Résultat trouvé ",
+		"description": "si fetch ne retourne pas d'élément"
+	},
+	
+	"page":{
+		"message": "Rechercher l'url de la Page",
+		"description": "context menu page"
+	}
+}

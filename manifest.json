@@ -1,0 +1,39 @@
+{
+	"name": "__MSG_extensionName__",
+	"version": "1.0",
+	"description": "__MSG_extensionDescription__",
+	"manifest_version": 2,
+	"options_ui":{
+		"page": "./option/option.html",
+		"browser_style": true,
+		"chrome_style": true,
+		"open_in_tab": true
+	},
+	"icons": {
+			"16": "resources/icon16.png",
+			"48": "resources/icon48.png",
+			"128": "resources/icon128.png"
+	},
+	"browser_action": {
+		"default_icon": "resources/icon16.png",
+		"default_title": "__MSG_extensionTitle__"
+	},
+	"permissions": [
+		"activeTab",
+		"contextMenus",
+		"storage",
+		"notifications",
+		"<all_urls>",
+		"tabs"
+		],
+	"background": {
+		"page": "./background/backgroundScript.html",
+		"persistent": true
+	},
+	"browser_specific_settings":{
+		"gecko": {
+			"id": "{16cb6b0a-d815-11eb-b8bc-0242ac130003}"
+		}
+	},
+	"default_locale": "en"
+}

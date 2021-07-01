@@ -1,0 +1,35 @@
+body{
+	background-color: #F7F7F7;	
+}
+
+button{
+	width:200px;
+    height:75px;	
+}
+
+div{
+	left: 40%;
+	position: absolute;
+	font: bold 1.4em arial;
+	outline: none;
+}
+
+#top{
+	top: 10%;
+}
+
+#bot{
+	top: 45%;
+}
+
+#instance{
+	margin-bottom: 40%;
+}
+
+#optionRequest{
+	margin-bottom: 40%;
+}
+
+#erase{
+	color: #FF0000;
+}
