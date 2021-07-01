@@ -5,7 +5,7 @@
 	},
 
 	"extensionDescription": {
-		"message": "MISP Threat Sharing",
+		"message": "MISP Expansion is an extension to query MISP instances from the browser.",
 		"description": "Description of the extension."
 	},
 	
@@ -35,11 +35,11 @@
 	
 	"loginTexte": {
 		"message": "URL",
-		"description": "URL address of MISP instance"
+		"description": "URL address of the MISP instance"
 	},
 	
 	"emptyChamp":{
-		"message": "Enter an Adress and an auth key please",
+		"message": "Enter an Address and an auth key please",
 		"description": "option html if empty field"
 	},
 	
@@ -54,7 +54,7 @@
 	},
 	
 	"idSaved":{
-		"message": "Misp Instance saved",
+		"message": "MISP instance saved",
 		"description": "when you press 'save' button and option.html close -> save succes"
 	},
 	
@@ -70,11 +70,11 @@
 	
 	"pwdTexte": {
 		"message": "Auth Key",
-		"description": "psw to connect to MISP"
+		"description": "Authentication key to connect with the MISP instance"
 	},
 	
 	"NoCredentials":{
-		"message": "no Misp credentials saved",
+		"message": "no MISP credentials saved",
 		"description": "if there is no storage credentials"
 	},
 	
