@@ -1,9 +1,8 @@
-# browser-extension
-MISP expansion - a browser extension (Firefox and Chrome) to lookup on MISP
+# MISP Expansion (browser extension)
 
+MISP browser extension (Firefox and Chrome) to lookup selected text on one or more MISP instances.
 
-
-MISP expansion is an open source extension for Firefox and Chrome to simplify the use of MISP. It allows users to quickly check if something on the page is a known event by selecting and then right clicking on the web page text.
+MISP browser expansion is an open source extension for Firefox and Chrome to simplify the use of MISP. It allows users to quickly check if something on the page is a known event by selecting and then right clicking on the web page text.
 
 # Features
 
