@@ -2,7 +2,6 @@
 
 const EMPTY = "";
 const RETOURCHARIOT = "\n";
-const INFO = "Info";
 
 /////////////////I18N SECTION/////////////////
 //if you modify one of this value, you also have to modify them in all of the message.json file
@@ -39,6 +38,7 @@ const CAP = "caption";
 const TABLE = "InstanceTable";
 const OPTREQUEST = "optionRequest";
 const EMPTYRESULT = "emptyResult";
+const PROTOCOLID = "protocolId";
 
-export {EMPTY, WARNING, RESFAIL, WRNMESSAGE, INFOTITLE, NOCRED, ERASEDONE, EMPTYCHAMP, IDSAV, CAP, TABLE, EVENTNAME, OPTREQUEST, INFO, NBOFEVENT,
+export {EMPTY, WARNING, RESFAIL, WRNMESSAGE, INFOTITLE, NOCRED, ERASEDONE, EMPTYCHAMP, IDSAV, CAP, TABLE, EVENTNAME, OPTREQUEST, NBOFEVENT, PROTOCOLID,
  SAVEBUTTON, LOGTEXT, PWDTEXT, ERASE, NORI, LOGINPUT, PWDINPUT, VIEW, INSTANCE, NBOFRES, ERASECONFIRM, RETOURCHARIOT, NBOFELEMENT, NBOFOBJECT, EMPTYRESULT};

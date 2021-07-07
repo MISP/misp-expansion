@@ -2,7 +2,6 @@ import {myBrowser} from '../../utils/utils.js'
 import {LOGTEXT, PWDTEXT, CAP, VIEW, TABLE, EMPTY} from '../../utils/lexicon.js'
 import {CREDENTIALSNAME, URLFORFETCH, KEY} from '../../background/backgroundStorage.js'
 import {unconvert} from '../../background/backgroundStorage.js'
-import {urlChecker} from '../../utils/utils.js'
 
 const ERROR = "error";
 const INSTANCE = "Instance";
@@ -58,7 +57,7 @@ function sub4(message){
 
 //check if login are correct or not
 function checkConnection(element, htmlElement,i,j){
-	fetch(urlChecker(unconvert(element[i][URLFORFETCH])) + CHECK , {
+	fetch(unconvert(element[i][URLFORFETCH]) + CHECK , {
 		headers: {
 			Accept: "application/json",
 			Authorization: unconvert(element[i][KEY]),

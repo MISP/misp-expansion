@@ -1,7 +1,7 @@
 import {myBrowser} from '../utils/utils.js'
 import {notifyI18n} from '../utils/utils.js'
 import {INFOTITLE,NOCRED} from '../utils/lexicon.js'
-import {myAlert,sendRequest} from './backgroundFunction.js'
+import {sendRequest} from './backgroundFunction.js'
 import {CREDENTIALSNAME, NOB, KEY, URLFORFETCH, unconvert} from './backgroundStorage.js'
 
 //////////////////INIT//////////////////////////////////////

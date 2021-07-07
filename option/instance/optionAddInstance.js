@@ -1,6 +1,6 @@
 import {myBrowser, SOUPE} from '../../utils/utils.js'
 import {SAVEBUTTON,LOGTEXT, PWDTEXT} from '../../utils/lexicon.js'
-import {EMPTY, EMPTYCHAMP, IDSAV, LOGINPUT, PWDINPUT} from '../../utils/lexicon.js'
+import {EMPTY, EMPTYCHAMP, IDSAV, LOGINPUT, PWDINPUT, PROTOCOLID} from '../../utils/lexicon.js'
 import {CREDENTIALSNAME} from '../../background/backgroundStorage.js'
 
 
@@ -20,7 +20,7 @@ export function saveData(){
 		document.getElementById(PWDINPUT).value === undefined || document.getElementById(PWDINPUT).value == EMPTY){
 		alert(myBrowser.i18n.getMessage(EMPTYCHAMP));
 	}else{
-		save(convert(document.getElementById(LOGINPUT).value),convert(document.getElementById(PWDINPUT).value));
+		save(convert(document.getElementById(PROTOCOLID).value + document.getElementById(LOGINPUT).value),convert(document.getElementById(PWDINPUT).value));
 	}
 	//document.getElementById(LOGINPUT).value = EMPTY;
 	document.getElementById(PWDINPUT).value = EMPTY;

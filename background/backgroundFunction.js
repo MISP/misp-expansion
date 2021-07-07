@@ -1,5 +1,5 @@
-import {myBrowser, notify,notifyI18n, urlChecker} from '../utils/utils.js'
-import {INFOTITLE,RESFAIL,WARNING,WRNMESSAGE, RETOURCHARIOT, INFO, EVENTNAME, NBOFELEMENT, NBOFOBJECT, NBOFEVENT, NBOFRES, EMPTYRESULT} from '../utils/lexicon.js'
+import {myBrowser, notify,notifyI18n} from '../utils/utils.js'
+import {INFOTITLE,RESFAIL,WARNING,WRNMESSAGE, RETOURCHARIOT, EVENTNAME, NBOFELEMENT, NBOFOBJECT, NBOFEVENT, NBOFRES, EMPTYRESULT} from '../utils/lexicon.js'
 
 //those const depend of the MISP response format///////////////////////// 
 const REST = "/attributes/restSearch";
@@ -11,17 +11,11 @@ const ID = "ID: ";
 const VIEW = "/events/view/";
 /////////////////////////////////////////////////
 
-
-//create an alert with the specified message
-export function myAlert(msg,url){
-	alert(myBrowser.i18n.getMessage(msg)+" "+url );
-}	
-
 //send a request
 export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
-	let link = urlChecker(url)+ VIEW;
+	let link = url + VIEW;
 	let print = value+RETOURCHARIOT;
-	fetch(urlChecker(url) + REST , {
+	fetch(url+ REST , {
 		body: JSON.stringify({"returnFormat":"json","page":page,"value":value}),
 		headers: {
 			Accept: "application/json",
@@ -33,7 +27,7 @@ export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
 	})
 	.then(function(response) {
 		if(!response.ok){
-			//notifyI18n(WARNING, WRNMESSAGE);
+			notifyI18n(WARNING, WRNMESSAGE);
 		}else{
 			response.json().then(function(formatedResponse) {
 				let nbOfObject = formatedResponse.response.Attribute.length;//use mutliple time
@@ -61,7 +55,6 @@ export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
 		}
 	})
 	.catch(function(error) {
-		//notifyI18n(INFOTITLE,RESFAIL);
-		//notify(INFO, error.message);
+		notify(url,myBrowser.i18n.getMessage(RESFAIL)+" "+error.message);
 	});
 }

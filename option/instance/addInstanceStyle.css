@@ -14,13 +14,15 @@ p{
 }
 
 #logInput{
-	width:400px;
+	width:325px;
     height:25px;
+	font-size: 1.4em;
 }
 
 #pwdInput{
 	width:400px;
     height:25px;
+	font-size: 1.4em;
 }
 
 div{
@@ -33,4 +35,10 @@ div{
 	font: bold arial;
 	outline: none;
 	margin-top: 2em;
+}
+
+select{
+	height:30px;
+	width: 75px;	
+	font-size: 1.4em;
 }
