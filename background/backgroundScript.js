@@ -6,16 +6,10 @@ import {initStorage} from './backgroundStorage.js'
 //////////////////////INIT SECTION//////////////////////////////////////////////////////
 
 // when extension is installed
-myBrowser.runtime.onInstalled.addListener(() => {
-	createContexteMenu();
-	initStorage();
-});
+myBrowser.runtime.onInstalled.addListener(init);
 
 //When browser is started
-myBrowser.runtime.onStartup.addListener(() => {
-	createContexteMenu();
-	initStorage();
-});
+myBrowser.runtime.onStartup.addListener(init);
 
 //context menu listener
 myBrowser.contextMenus.onClicked.addListener(contexteMenuFunction)
@@ -25,3 +19,9 @@ myBrowser.browserAction.setPopup({popup:EMPTY});  //disable browserAction's popu
 myBrowser.browserAction.onClicked.addListener(()=>{
     myBrowser.runtime.openOptionsPage();
 });
+
+//prepare extension
+function init(){
+	createContexteMenu();
+	initStorage();
+};

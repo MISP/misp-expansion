@@ -1,16 +1,18 @@
 import {myBrowser, SOUPE} from '../../utils/utils.js'
 import {SAVEBUTTON,LOGTEXT, PWDTEXT} from '../../utils/lexicon.js'
-import {EMPTY, EMPTYCHAMP, IDSAV, LOGINPUT, PWDINPUT, PROTOCOLID} from '../../utils/lexicon.js'
+import {EMPTY, EMPTYCHAMP, IDSAV, LOGINPUT, PWDINPUT, PROTOCOLID, CLICK,DOMLOADED} from '../../utils/lexicon.js'
 import {CREDENTIALSNAME} from '../../background/backgroundStorage.js'
 
+//wait loading document element
+document.addEventListener(DOMLOADED, function () {
+	//init object text with i18n in option.html page
+	document.getElementById(LOGTEXT).textContent = myBrowser.i18n.getMessage(LOGTEXT);
+	document.getElementById(PWDTEXT).textContent = myBrowser.i18n.getMessage(PWDTEXT);
+	document.getElementById(SAVEBUTTON).textContent = myBrowser.i18n.getMessage(SAVEBUTTON);
 
-//init object text with i18n in option.html page
-document.getElementById(LOGTEXT).textContent = myBrowser.i18n.getMessage(LOGTEXT);
-document.getElementById(PWDTEXT).textContent = myBrowser.i18n.getMessage(PWDTEXT);
-document.getElementById(SAVEBUTTON).textContent = myBrowser.i18n.getMessage(SAVEBUTTON);
-
-//buttons functions
-saveButton.onclick = saveData;
+	//buttons functions
+	document.getElementById(SAVEBUTTON).addEventListener(CLICK, saveData);
+});
 
 const O = "0";
 
@@ -22,7 +24,7 @@ export function saveData(){
 	}else{
 		save(convert(document.getElementById(PROTOCOLID).value + document.getElementById(LOGINPUT).value),convert(document.getElementById(PWDINPUT).value));
 	}
-	//document.getElementById(LOGINPUT).value = EMPTY;
+	document.getElementById(LOGINPUT).value = EMPTY;
 	document.getElementById(PWDINPUT).value = EMPTY;
 	
 }

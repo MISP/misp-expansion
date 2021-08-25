@@ -17,7 +17,7 @@ function findBrowser(){
 
 
 export {myBrowser,SOUPE};
-export {notifyI18n, notify, urlChecker};
+export {notifyI18n, notify};
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,9 +34,4 @@ function notify(title,message) {
 //notify with i18n
 function notifyI18n(title,message){
 	notify(myBrowser.i18n.getMessage(title),myBrowser.i18n.getMessage(message));
-}
-
-//check if url contain a protocol or not
-function urlChecker(url){
-	return "https://"+url
 }

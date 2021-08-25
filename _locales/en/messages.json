@@ -132,6 +132,11 @@
 		"description": "if fetch return nothing"
 	},
 	
+	"advRes": {
+		"message": "Advanced Fetch result",
+		"description": "if user want popup or an advanced response"
+	},
+	
 	"page":{
 		"message": "Search Page's url",
 		"description": "context menu page"

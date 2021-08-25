@@ -11,8 +11,10 @@ table{
 
 th:nth-child(1) {
   width: 6%;
-  border-style: none;
+  font-size: 10px;
+  background-color: #DEDEDE;
 }
+
 th:nth-child(2) {
   width: 10%;
   border-style: none;

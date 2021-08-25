@@ -1,12 +1,18 @@
 import {myBrowser, SOUPE} from '../utils/utils.js'
 import {EMPTY} from '../utils/lexicon.js'
 
+const ADVANCEREQUIRED = "MISPExpansionAdvanceFetch";
 const CREDENTIALSNAME = "MISPExpansionLoginTab";
 const NOB = "MispNumberOfRes"
 const URLFORFETCH = 0;
 const KEY = 1;
 
 function initStorage(){
+	myBrowser.storage.sync.get(ADVANCEREQUIRED, function(res){
+	if(res[ADVANCEREQUIRED] === undefined){
+				myBrowser.storage.sync.set({[ADVANCEREQUIRED]:false},function(){});
+			}
+	});
 	myBrowser.storage.sync.get(NOB, function(res){
 	if(res[NOB] === undefined){
 				myBrowser.storage.sync.set({[NOB]:1},function(){});
@@ -38,4 +44,4 @@ function decipher (salt){
 }
 
 export { initStorage, unconvert};
-export { CREDENTIALSNAME, NOB, KEY, URLFORFETCH};
+export { CREDENTIALSNAME, NOB, KEY, URLFORFETCH, ADVANCEREQUIRED};

@@ -19,12 +19,10 @@
 		"default_title": "__MSG_extensionTitle__"
 	},
 	"permissions": [
-		"activeTab",
 		"contextMenus",
 		"storage",
 		"notifications",
-		"<all_urls>",
-		"tabs"
+		"<all_urls>"
 		],
 	"background": {
 		"page": "./background/backgroundScript.html",

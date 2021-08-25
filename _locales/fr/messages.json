@@ -5,7 +5,7 @@
 	},
 
 	"extensionDescription": {
-		"message": "Misp Threat Sharing",
+		"message": "MISP Threat Sharing",
 		"description": "Description de l'extension."
 	},
 	
@@ -104,7 +104,7 @@
 	},
 	
 	"NoCredentials":{
-		"message": "Auncun identifiant Misp enregistré",
+		"message": "Auncun identifiant MISP enregistré",
 		"description": "si il n'y a pas de credentials dans le storage"
 	},
 	
@@ -114,7 +114,7 @@
 	},
 	
 	"nbOfElement": {
-		"message": "Nombre d'attributs dans un évenement: ",
+		"message": "Nombre d'attributs dans l'évenement: ",
 		"description": "nombre d'élément dans un objet (response.attribut)"
 	},
 	
@@ -131,6 +131,11 @@
 	"emptyResult": {
 		"message": "Aucun Résultat trouvé ",
 		"description": "si fetch ne retourne pas d'élément"
+	},
+	
+	"advRes": {
+		"message": "Réponse avancée du fetch",
+		"description": "si l'utilisateur souhaite une popup ou une réponse plus détaillée"
 	},
 	
 	"page":{
