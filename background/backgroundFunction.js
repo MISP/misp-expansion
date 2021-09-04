@@ -8,10 +8,33 @@ const OMIT = "omit";
 const EVENTINFO = "event_info: ";
 const EVENTID = "event_id: ";
 const UUID = "UUID: ";
-const ID = "ID: ";
+const IDD = "ID: ";
 const VIEW = "/events/view/";
 const PATH = "./htmlAdvancedFetch/advancedRes.html";
-/////////////////////////////////////////////////
+
+/////////////////////////HTML ID & CLASS/////////////////////////////
+const VALUE = "value";
+const ID = "id";
+const RESPONSE = "response";
+const URL = "url";
+const ERROR = "error";
+const CLASS = "class";
+const OBJECT =  "object";
+const INFO = "info";
+const EMPTY = "empty";
+const INFOOBJECT = "infoObject";
+const INFORES = "infoRes";
+const ENAME = "evName";
+const NBEV = "nbEv";
+const NBELE = "nbEle";
+const A = "resLink";
+const EVINFO = "evInfo";
+const EVID = "evID";
+const EVUUID = "evuuid";
+const EV_ID = "ev_ID";
+//////////////////////////////////////////////////////////////////////
+
+
 
 //send a request, return notification
 export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
@@ -37,7 +60,7 @@ export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
 							print += link+uuid+RETOURCHARIOT;
 							print += myBrowser.i18n.getMessage(NBOFELEMENT)+Object.keys(formatedResponse.response.Attribute[i]).length+RETOURCHARIOT;
 							print += myBrowser.i18n.getMessage(NBOFEVENT)+Object.keys(formatedResponse.response.Attribute[i].Event).length+RETOURCHARIOT;
-							print += ID+formatedResponse.response.Attribute[i].id+RETOURCHARIOT;
+							print += IDD+formatedResponse.response.Attribute[i].id+RETOURCHARIOT;
 							print += EVENTID+formatedResponse.response.Attribute[i].event_id+RETOURCHARIOT;
 							print += UUID+uuid+RETOURCHARIOT;	
 						}
@@ -55,61 +78,120 @@ export function sendRequest(value,nbOfRes,page,url,authKey,mthd){
 //send a request, return new html page
 export function sendRequestAdvanced(value,nbOfRes,page,res,mthd){
 	let wdw = window.open(PATH,"_blank", "width=300,height=400,status=no, menubar=false,scrollbars=yes,resizable=yes");	
-	let isWrong = false; //avoid double url (can't change the content = url to keep a nice result)
-	let content = "<h1> Value: "+value+"</h1>";
+	let newElement;
 	let promises = [];
-	res[CREDENTIALSNAME].forEach(function(element){ 
-		let url = unconvert(element[URLFORFETCH]);
-		let link = url + VIEW;
-		promises.push(doFetch(url,page, value,unconvert(element[KEY]),mthd)
-		.then(function(response) {
-			if(!response.ok){
-				content += "<h2> Instance: "+url+"</h2>";
-				content += "<h3>"+myBrowser.i18n.getMessage(WRNMESSAGE)+"</h3>";
-				isWrong = true;
-			}else{
-				isWrong = false;
-				return response.json();
-			}
-		}).catch(function(error) {
-			content += "<h2> Instance: "+url+"</h2>";
-			content += "<h3>"+myBrowser.i18n.getMessage(RESFAIL)+" "+error.message+"</h3>";
-			isWrong = true;
-		})
-		.then(function(formatedResponse) {
-			if(!isWrong){
-				content += "<h2> Instance: "+url+"</h2>";
-				let nbOfObject = formatedResponse.response.Attribute.length;//use mutliple time
-				if(nbOfObject == 0){
-					content += "<h3>"+ myBrowser.i18n.getMessage(EMPTYRESULT)+"<h3>";
+	//let newTab =  myBrowser.tabs.create({url: PATH},function(thisTab){
+	wdw.document.body.onload = function(){
+		newElement = wdw.document.createElement("div");
+		newElement.setAttribute(ID, RESPONSE);
+		wdw.document.body.appendChild(newElement);	
+		wdw.document.getElementById(RESPONSE).style.display = "none";		
+		newElement = wdw.document.createElement("h1");
+		newElement.setAttribute(ID, VALUE);
+		wdw.document.getElementById(RESPONSE).appendChild(newElement);
+		wdw.document.getElementById(VALUE).textContent = value;	
+		for(let i = 0; i < res[CREDENTIALSNAME].length;i++){ 
+			let url = unconvert(res[CREDENTIALSNAME][i][URLFORFETCH]);
+			let link = url + VIEW;
+			newElement = wdw.document.createElement("div");
+			newElement.setAttribute(ID, RESPONSE+""+i);
+			wdw.document.getElementById(RESPONSE).appendChild(newElement);	
+			newElement = wdw.document.createElement("h2");
+			newElement.setAttribute(ID, URL+""+i);
+			newElement.setAttribute(CLASS,URL);
+			wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+			wdw.document.getElementById(URL+""+i).textContent = url;	
+			promises.push(
+			doFetch(url,page, value,unconvert(res[CREDENTIALSNAME][i][KEY]),mthd)
+			.then(function(response) {
+				if(!response.ok){
+					newElement = wdw.document.createElement("h3");
+					newElement.setAttribute(ID, ERROR+""+i);
+					newElement.setAttribute(CLASS,ERROR);
+					wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+					wdw.document.getElementById(ERROR+""+i).textContent = myBrowser.i18n.getMessage(WRNMESSAGE);	
 				}else{
-					content += "<h4>"+myBrowser.i18n.getMessage(NBOFOBJECT)+nbOfObject+"</h4>";
-					content += "<h4>"+myBrowser.i18n.getMessage(NBOFRES)+nbOfRes+"</h4>";
-					for(let i = 0;i<nbOfRes;i++){
-						if(formatedResponse.response.Attribute[i] != undefined){
-							let uuid = formatedResponse.response.Attribute[i].Event.uuid; //use multiple time 
-							link = link+uuid;
-							content += "<h3>"+myBrowser.i18n.getMessage(EVENTNAME)+": "+(i+1)+"</h3>";
-							content += "<b>"+myBrowser.i18n.getMessage(NBOFELEMENT)+Object.keys(formatedResponse.response.Attribute[i]).length+"</b><br>";
-							content += "<b>"+myBrowser.i18n.getMessage(NBOFEVENT)+Object.keys(formatedResponse.response.Attribute[i].Event).length+"</b><br>";
-							content += "<a href="+link+" target=\"_blank\" rel=\"noopener noreferrer\">"+link+"</a>";
-							content += "<p>"+EVENTINFO+(formatedResponse.response.Attribute[i].Event.info)+"</p>";
-							content += "<p>"+UUID+uuid+"</p>";
-							content += "<p>"+ID+formatedResponse.response.Attribute[i].id+"</p>";
-							content += "<p>"+EVENTID+formatedResponse.response.Attribute[i].event_id+"</p>";
-							content += "<br>";
+					response.json().then(function(formatedResponse) {
+						let nbOfObject = formatedResponse.response.Attribute.length;//use mutliple time
+						if(nbOfObject == 0){
+							newElement = wdw.document.createElement("h3");
+							newElement.setAttribute(ID, OBJECT+""+i);
+							newElement.setAttribute(CLASS, EMPTY);
+							wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+							wdw.document.getElementById(OBJECT+""+i).textContent = myBrowser.i18n.getMessage(EMPTYRESULT);
+						}else{
+							newElement = wdw.document.createElement("h4");
+							newElement.setAttribute(ID, INFOOBJECT+""+i);
+							newElement.setAttribute(CLASS, INFO);
+							wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+							wdw.document.getElementById(INFOOBJECT+""+i).textContent = myBrowser.i18n.getMessage(NBOFOBJECT)+nbOfObject;
+							newElement = wdw.document.createElement("h4");
+							newElement.setAttribute(ID, INFORES+""+i);
+							newElement.setAttribute(CLASS, INFO);
+							wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+							wdw.document.getElementById(INFORES+""+i).textContent = myBrowser.i18n.getMessage(NBOFRES)+nbOfRes;
+							for(let j = 0;j<nbOfRes;j++){
+								if(formatedResponse.response.Attribute[j] != undefined){
+									let uuid = formatedResponse.response.Attribute[i].Event.uuid; //use multiple time 
+									link = link+uuid;
+									newElement = wdw.document.createElement("div");
+									newElement.setAttribute(ID, i+""+OBJECT+""+j);
+									newElement.setAttribute(CLASS, OBJECT);
+									wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+									newElement = wdw.document.createElement("h3");
+									newElement.setAttribute(ID,i+""+ENAME+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+ENAME+""+j).textContent = myBrowser.i18n.getMessage(EVENTNAME)+": "+(j+1);
+									newElement = wdw.document.createElement("h4");
+									newElement.setAttribute(ID,i+""+NBELE+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+NBELE+""+j).textContent = myBrowser.i18n.getMessage(NBOFELEMENT)+Object.keys(formatedResponse.response.Attribute[j]).length;
+									newElement = wdw.document.createElement("h4");
+									newElement.setAttribute(ID,i+""+NBEV+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+NBEV+""+j).textContent = myBrowser.i18n.getMessage(NBOFEVENT)+Object.keys(formatedResponse.response.Attribute[j].Event).length;
+									newElement = wdw.document.createElement("a");
+									newElement.setAttribute(ID,i+""+A+""+j);
+									newElement.setAttribute('href', link);
+									newElement.setAttribute('target', "_blank");
+									newElement.setAttribute('rel',"noopener noreferrer");
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+A+""+j).textContent = link;
+									newElement = wdw.document.createElement("p");
+									newElement.setAttribute(ID,i+""+EVINFO+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+EVINFO+""+j).textContent = EVENTINFO+(formatedResponse.response.Attribute[i].Event.info);
+									newElement = wdw.document.createElement("p");
+									newElement.setAttribute(ID,i+""+EVUUID+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+EVUUID+""+j).textContent = UUID+uuid;
+									newElement = wdw.document.createElement("p");
+									newElement.setAttribute(ID,i+""+EVID+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+EVID+""+j).textContent = ID+formatedResponse.response.Attribute[i].id;
+									newElement = wdw.document.createElement("h4");
+									newElement.setAttribute(ID,i+""+EV_ID+""+j);
+									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
+									wdw.document.getElementById(i+""+EV_ID+""+j).textContent = EVENTID+formatedResponse.response.Attribute[i].event_id;
+								}
+							}
 						}
-					}	
+					});
 				}
-			}
-		}));
-	});
-	Promise.allSettled(promises)
-	.then(function(){
-		wdw.document.getElementById("before").remove();
-		wdw.document.getElementById("response").innerHTML = content;
-		//wdw.document.styleSheets[0].cssRules[0].style.backgroundImage= myBrowser.runtime.getURL("resources/MISPBackground.png");
-	})
+			}).catch(function(error) {
+				newElement = wdw.document.createElement("h3");
+				newElement.setAttribute(ID, ERROR+""+i);
+				newElement.setAttribute(CLASS,ERROR);
+				wdw.document.getElementById(RESPONSE+""+i).appendChild(newElement);
+				wdw.document.getElementById(ERROR+""+i).textContent = myBrowser.i18n.getMessage(RESFAIL)+" "+error.message;
+			}));
+		};
+		Promise.allSettled(promises)
+		.then(function(){
+			wdw.document.getElementById("before").remove();
+			wdw.document.getElementById(RESPONSE).style.display = "block";
+		});
+    }
 }
 
 //fetch function used 

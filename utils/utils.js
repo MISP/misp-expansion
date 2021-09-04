@@ -1,6 +1,4 @@
-const SOUPE = "U2FsdGVkX18ZUVvShFSES21qHsQEqZXMxQ9zgHy+bu0=";
 const URL = "./resources/icon48.png";
-
 const TYPE = "basic";
 const UNDEF = "undefined";
 
@@ -16,7 +14,7 @@ function findBrowser(){
 } 
 
 
-export {myBrowser,SOUPE};
+export {myBrowser};
 export {notifyI18n, notify};
 
 ////////////////////////////////////////////////////////////////////////////////////////

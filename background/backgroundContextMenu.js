@@ -12,7 +12,6 @@ const LINK = "link";
 const NORMAL = "normal";
 const POST = "POST";
 
-
 //create context menu 
 export function createContexteMenu(){
 	myBrowser.contextMenus.create({
@@ -60,7 +59,6 @@ function searchBySelection(selec){
 			myBrowser.storage.sync.get(NOB, function(resNumber){	
 				myBrowser.storage.sync.get(ADVANCEREQUIRED, function(isAdvanced){
 					if(isAdvanced[ADVANCEREQUIRED]){
-						//window.open();
 						sendRequestAdvanced(selec,resNumber[NOB],1,res,POST);
 					}else{
 						res[CREDENTIALSNAME].forEach(function(element){ 

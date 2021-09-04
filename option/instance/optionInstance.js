@@ -48,6 +48,7 @@ function removeElement(element, tab, index){
 		tab.splice(index, NBOFELEMENTTOREMOVE);
 		myBrowser.storage.sync.set({[CREDENTIALSNAME]:tab},function(){});
 	}
+	document.getElementById(NBOFINSTANCE).textContent =  "MISP Instance :" +tab.length;
 }
 
 //print key at MISP format

@@ -22,7 +22,8 @@
 		"contextMenus",
 		"storage",
 		"notifications",
-		"<all_urls>"
+		"<all_urls>",
+		"tabs"
 		],
 	"background": {
 		"page": "./background/backgroundScript.html",

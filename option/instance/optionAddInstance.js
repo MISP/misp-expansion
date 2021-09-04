@@ -1,7 +1,7 @@
-import {myBrowser, SOUPE} from '../../utils/utils.js'
+import {myBrowser} from '../../utils/utils.js'
 import {SAVEBUTTON,LOGTEXT, PWDTEXT} from '../../utils/lexicon.js'
 import {EMPTY, EMPTYCHAMP, IDSAV, LOGINPUT, PWDINPUT, PROTOCOLID, CLICK,DOMLOADED} from '../../utils/lexicon.js'
-import {CREDENTIALSNAME} from '../../background/backgroundStorage.js'
+import {CREDENTIALSNAME, convert} from '../../background/backgroundStorage.js'
 
 //wait loading document element
 document.addEventListener(DOMLOADED, function () {
@@ -13,8 +13,6 @@ document.addEventListener(DOMLOADED, function () {
 	//buttons functions
 	document.getElementById(SAVEBUTTON).addEventListener(CLICK, saveData);
 });
-
-const O = "0";
 
 //check if instance fields aren't empty then save them after conversion
 export function saveData(){
@@ -37,28 +35,4 @@ function save(el1,el2){
 		myBrowser.storage.sync.set({[CREDENTIALSNAME]:res[CREDENTIALSNAME]},function(){});
 	});
 	alert(myBrowser.i18n.getMessage(IDSAV));
-}
-
-
-//convert input data as crypted data instead of row data 
-function convert(data){
-	const theCipher = cipher(SOUPE);
-	data = theCipher(data);
-	return data;
-}
-
-//crypto
-function cipher(salt){
-    //convertit le message en un tableau de nombre (code asci des chars du msg)
-	const textToChars = text => text.split(EMPTY).map(c => c.charCodeAt(0));
-    //converti en hexa avec un pas de -2
-	const byteHex = n => (O + Number(n).toString(16)).substr(-2);
-    //ajoute le salt au resultat
-	const applySaltToChar = code => textToChars(salt).reduce((a,b) => a ^ b, code);
-	//'merge' le tableau
-    return text => text.split(EMPTY)
-        .map(textToChars)
-        .map(applySaltToChar)
-        .map(byteHex)
-        .join(EMPTY);
 }
