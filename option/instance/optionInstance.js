@@ -34,8 +34,7 @@ document.addEventListener(DOMLOADED, function () {
 function createTable(data){
 	for(let i = 0; i < data.length;i++){ 
 		let j = i+1;
-		let newRow = document.createElement('tr');
-		checkConnection(data,newRow,i,j);
+		checkConnection(data,i,j);
 	}
 }
 
@@ -63,7 +62,7 @@ function sub4(message){
 }
 
 //check if login are correct or not
-function checkConnection(element, htmlElement,i,j){
+function checkConnection(element,i,j){
 	fetch(unconvert(element[i][URLFORFETCH]) + CHECK , {
 		headers: {
 			Accept: "application/json",
@@ -75,34 +74,56 @@ function checkConnection(element, htmlElement,i,j){
 	})
 	.then(function(response) {
 		if(!response.ok){
-			appendElement(htmlElement,element,ERROR,i,j);
-			htmlElement.style.backgroundColor = RED;
+			appendElement(element,ERROR,i,j);
+			document.getElementById("response"+j).style.backgroundColor = RED;
 		}else{
 			response.json().then(function(formatedResponse) {
 				if(formatedResponse.version != undefined){
-					appendElement(htmlElement,element,formatedResponse.version,i,j);
+					appendElement(element,formatedResponse.version,i,j);
 				}else{
 					//this case should not happen 
-					appendElement(htmlElement,element,EMPTY,i,j);
+					appendElement(element,EMPTY,i,j);
 				}
-				htmlElement.style.backgroundColor = GREEN;
+				document.getElementById("response"+j).style.backgroundColor = GREEN;
 			});
 		}
 	})
 	.catch(function(error) {
-		appendElement(htmlElement,element,ERROR,i,j);
-		htmlElement.style.backgroundColor = RED;
+		appendElement(element,ERROR,i,j);
+		document.getElementById("response"+j).style.backgroundColor = RED;
 	});
 }
 
 //set and append the storage instance element to the current document
-function appendElement(htmlElement,element,val,i,j){
-	htmlElement.innerHTML = '<td id="'+INSTANCE+j+'"></td><td id="'+VALUE+j+'"></td><td id="'+URL+j+'"></td><td id = "'+MDP+j+'"></td><td><input type="button" style="width:100%; height:100%;" id="'+BUTTON+j+'"></td>';
-	document.getElementById(TABLE).appendChild(htmlElement);
-	document.getElementById(INSTANCE+j).textContent = INSTANCE +' '+j;	
+function appendElement(element,val,i,j){
+	let DOMelement; 
+	DOMelement = document.createElement('tr');
+	DOMelement.setAttribute("id","response"+j)
+	document.getElementById(TABLE).appendChild(DOMelement);
+	DOMelement = document.createElement("td");
+	DOMelement.setAttribute("id",INSTANCE+j);
+	document.getElementById("response"+j).appendChild(DOMelement);
+	document.getElementById(INSTANCE+j).textContent = INSTANCE +' '+j;
+	DOMelement = document.createElement("td");
+	DOMelement.setAttribute("id",VALUE+j);
+	document.getElementById("response"+j).appendChild(DOMelement);	
 	document.getElementById(VALUE+j).textContent = val;	
-	document.getElementById(URL+j).textContent = unconvert(element[i][URLFORFETCH]);	
+	DOMelement = document.createElement("td");
+	DOMelement.setAttribute("id",URL+j);
+	document.getElementById("response"+j).appendChild(DOMelement);	
+	document.getElementById(URL+j).textContent = unconvert(element[i][URLFORFETCH]);
+	DOMelement = document.createElement("td");
+	DOMelement.setAttribute("id",MDP+j);
+	document.getElementById("response"+j).appendChild(DOMelement);		
 	document.getElementById(MDP+j).textContent = sub4(unconvert(element[i][KEY]));	
-	document.getElementById(BUTTON+j).value = "X";	
-	document.getElementById(BUTTON+j).onclick = function(){removeElement(document.getElementById(BUTTON+j).parentNode,element,i)};
+	DOMelement = document.createElement("td");
+	DOMelement.setAttribute("id","Button"+j);
+	document.getElementById("response"+j).appendChild(DOMelement);
+	let input = document.createElement('input');
+    input.value = "X";
+	input.type = "button" ;
+	input.style = "width:100%; height:100%;"
+	input.setAttribute("id",BUTTON+j);
+	input.onclick = function(){removeElement(document.getElementById(BUTTON+j).parentNode,element,i)};
+    document.getElementById("Button"+j).appendChild(input);	
 }
