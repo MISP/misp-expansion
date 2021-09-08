@@ -168,8 +168,8 @@ export function sendRequestAdvanced(value,nbOfRes,page,res,mthd){
 									newElement = wdw.document.createElement("p");
 									newElement.setAttribute(ID,i+""+EVID+""+j);
 									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
-									wdw.document.getElementById(i+""+EVID+""+j).textContent = ID+formatedResponse.response.Attribute[i].id;
-									newElement = wdw.document.createElement("h4");
+									wdw.document.getElementById(i+""+EVID+""+j).textContent = IDD+formatedResponse.response.Attribute[i].id;
+									newElement = wdw.document.createElement("p");
 									newElement.setAttribute(ID,i+""+EV_ID+""+j);
 									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
 									wdw.document.getElementById(i+""+EV_ID+""+j).textContent = EVENTID+formatedResponse.response.Attribute[i].event_id;
