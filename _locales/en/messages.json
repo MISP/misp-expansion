@@ -123,7 +123,7 @@
 	},
 	
 	"nbOfEvent": {
-		"message": "Number of object the Event attributes: ",
+		"message": "Number of object in the Event attributes: ",
 		"description": "Number of object the Event attributes"
 	},
 	

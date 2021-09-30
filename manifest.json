@@ -1,6 +1,6 @@
 {
 	"name": "__MSG_extensionName__",
-	"version": "1.0",
+	"version": "0.1",
 	"description": "__MSG_extensionDescription__",
 	"manifest_version": 2,
 	"options_ui":{
