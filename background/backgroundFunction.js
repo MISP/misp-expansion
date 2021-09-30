@@ -133,7 +133,7 @@ export function sendRequestAdvanced(value,nbOfRes,page,res,mthd){
 							for(let j = 0;j<nbOfRes;j++){
 								if(formatedResponse.response.Attribute[j] != undefined){
 									let uuid = formatedResponse.response.Attribute[i].Event.uuid; //use multiple time 
-									link = link+uuid;
+									let Currentlink = link+uuid;
 									newElement = wdw.document.createElement("div");
 									newElement.setAttribute(ID, i+""+OBJECT+""+j);
 									newElement.setAttribute(CLASS, OBJECT);
@@ -152,11 +152,11 @@ export function sendRequestAdvanced(value,nbOfRes,page,res,mthd){
 									wdw.document.getElementById(i+""+NBEV+""+j).textContent = myBrowser.i18n.getMessage(NBOFEVENT)+Object.keys(formatedResponse.response.Attribute[j].Event).length;
 									newElement = wdw.document.createElement("a");
 									newElement.setAttribute(ID,i+""+A+""+j);
-									newElement.setAttribute('href', link);
+									newElement.setAttribute('href', Currentlink);
 									newElement.setAttribute('target', "_blank");
 									newElement.setAttribute('rel',"noopener noreferrer");
 									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
-									wdw.document.getElementById(i+""+A+""+j).textContent = link;
+									wdw.document.getElementById(i+""+A+""+j).textContent = Currentlink;
 									newElement = wdw.document.createElement("p");
 									newElement.setAttribute(ID,i+""+EVINFO+""+j);
 									wdw.document.getElementById(i+""+OBJECT+""+j).appendChild(newElement);
